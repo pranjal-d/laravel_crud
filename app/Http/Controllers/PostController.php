@@ -61,10 +61,14 @@ class PostController extends Controller
      * @param  \App\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post)
+    public function edit($id)
     {
-        dd($post);
-        return view('post.edit',compact('post'));
+        
+        return view('post.edit',[
+            'data' => Post::find($id),
+        ]);
+        // dd($post);
+        // return view('post.edit',compact('post'));
     }
 
     /**
@@ -74,11 +78,12 @@ class PostController extends Controller
      * @param  \App\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(post $post)
+    public function update($id)
     {
-        $post->title = request('title');
-        $post->description = request('description');
-        $post->save();
+        $data = Post::find($id);
+        $data->title = request('title');
+        $data->description = request('description');
+        $data->save();
         echo "done";
     }
 
