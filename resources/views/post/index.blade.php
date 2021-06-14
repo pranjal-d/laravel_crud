@@ -16,7 +16,7 @@
         </tr>
         @foreach ($data as $value)
             <tr>
-                <td>{{$value->id}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$value->title}}</td>
                 <td>{{$value->description}}</td>
                 <td><a href="/post/{{$value->id}}/edit"> Edit </a>
